@@ -30,6 +30,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.sunshine.ForecastAdapter.ForecastAdapterOnClickHandler;
 import com.example.android.sunshine.data.SunshinePreferences;
@@ -221,8 +222,33 @@ public class MainActivity extends AppCompatActivity implements ForecastAdapterOn
             return true;
         }
 
-        // TODO (2) Launch the map when the map menu item is clicked
+        // COMPLETED (2) Launch the map when the map menu item is clicked
+        if (id == R.id.action_open_map) {
+            openMap();
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void openMap() {
+        String addressString = "bojmija skopje macedonia";
+
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("geo")
+                .path("0,0")
+                .appendQueryParameter("q", addressString);
+
+        Uri locationUri = builder.build();
+
+        Intent openMapIntent = new Intent(Intent.ACTION_VIEW);
+        openMapIntent.setData(locationUri);
+
+        if (openMapIntent.resolveActivity(getPackageManager()) != null) {
+            startActivity(openMapIntent);
+        } else {
+            Toast.makeText(this, R.string.no_map_app_error,
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }

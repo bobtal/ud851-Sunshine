@@ -27,10 +27,18 @@
     <!--Used in overflow menu to refresh weather data-->
     <string name="action_refresh">Refresh</string>
 
+    <!--Used in overflow menu to open map-->
+    <string name="action_open_map">Map</string>
+
+    <!--Error message if no map apps are present on the device-->
+    <string name="no_map_app_error">No map applications available on the device</string>
+
+    <!--Used in overflow menu to share weather data-->
+    <string name="action_share">Share Weather Details</string>
+
     <string name="error_message">
         An error has occurred. Please try again by clicking REFRESH
     </string>
-
 
     <!-- - - - - - - - - - - - - -->
     <!--Used by SunshineDateUtils-->
